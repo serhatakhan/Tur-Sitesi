@@ -1,0 +1,368 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+:root {
+    --main-color: #ffa343;
+    --text-color: #fff;
+    --bg-color: #000;
+
+    --h1-font: 6rem; /*rem, daha responsive bir görüntü sağlıyor*/
+    --h2-font: 3rem;
+    --p-font: 1rem;
+
+    --transition: all .5s ease;
+}
+
+/* ortak yapılar */
+.button{
+    background-color: var(--main-color);
+    padding: 15px 35px;
+    /* button inline bir element, inline elemente padding verince de
+    satırdaki bazı yapıların üstüne çıkabilir. o yüzden inline elementlerde
+    padding kullanırken bu sorunu yaşamamak için display: inline-block
+    kullanacağız. */
+    display: inline-block;
+    color: var(--bg-color);
+    border-radius: 8px;
+    border: 2px solid transparent;
+}
+
+.button:hover{
+    transform: translateX(10px);
+    transition: var(--transition); /*bunu genelde hover'da vermiyorlar bir üstteki button klasında veriyorlar*/
+    background-color: transparent;
+    border: 2px solid var(--text-color);
+    color: white;
+}
+
+.main-text{
+    color: var(--main-color);
+    font-size: 20px;
+    text-transform: uppercase; /*hepsini büyük harfe çevirdik*/
+    margin-bottom: 10px;
+    letter-spacing: 10px; /*harfler arası boşluk*/
+    margin-left: 10px;
+}
+
+/* ortak yapı son */
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    overflow-x: hidden; /*alttaki scroll çıkmasın istedik*/
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 20px;
+    backdrop-filter: blur(30px); /*arka plana resim atadığımız zaman blur gelecek*/
+    align-items: center;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.logo {
+    color: var(--text-color);
+    font-size: 40px;
+    font-weight: 800;
+    padding-left: 25px;
+}
+
+.logo span {
+    color: var(--main-color);
+}
+
+.navbar{
+    display: flex;
+    gap: 20px;
+}
+
+.navbar a{
+    color: var(--text-color);
+    margin: 15px 0;
+    font-weight: 600;
+    font-size: var(--p-font);
+    transition: var(--transition);
+}
+
+.navbar a:hover{
+    color: var(--main-color);
+}
+
+.right-panel{
+    display: flex;
+    gap: 15px;
+    padding-right: 25px;
+}
+
+.right-panel a{
+    color: var(--text-color);
+    transition: var(--transition);
+    font-size: var(--p-font);
+}
+
+.right-panel a:hover{
+    color: var(--main-color);
+    transform: translateY(-7px)
+}
+
+/* banner area */
+
+.home{
+    background-image: linear-gradient(to left, /*sola doğru*/
+    rgba(0,0,0,0.6),rgba(0,0,0,0.3)), /*geçiş yapılacak diğer değer 2.rgba kısmı*/
+    url(./images/Background.png);
+    width: 100%;
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    /* flex direction column özelliğini kullandıktan sonra artık diğer
+    özellikler tersine iş yapmaya başlar yani, align items yatayda hizalama yapar,
+    justify-content dikeyde hizalama yapar. */
+    /* normalde flex'in kendi varsayılan özelliği yataydır o yüzden de 
+    justify content yatayda, align items dikeyde hizalama yapar. ancak 
+    flex direction column özelliğiyle işler tersine döner justify ve align için. */
+    justify-content: center;
+    align-items: flex-start; /*sola yaslansın istedik o yüzden flex start*/
+}
+
+.home-text{
+    margin-left: 15px;
+    margin-top: 25px;
+}
+
+.home-text h1{
+    font-size: var(--h1-font);
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.home-text p{
+    font-size: var(--p-font);
+    font-weight: 700;
+    color: #979797;
+}
+
+.home-text p{
+    margin-bottom: 15px;
+    line-height: 1.3;
+}
+
+.holiday{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    /* içindeki elemanları yarı yarıya bölsün */
+    gap: 5rem;
+    align-items: center;
+    padding: 15px 15px;
+}
+
+.holiday-img img{
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.holiday-text{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+}
+
+.btn{
+    width: 250px;
+    background-color: var(--main-color);
+    padding: 15px 35px;
+    display: inline-block;
+    color: var(--bg-color);
+    border-radius: 8px;
+    border: 2px solid transparent;
+}
+
+.btn:hover{
+    transform: translateX(10px);
+    transition: var(--transition); 
+    background-color: transparent;
+    border: 2px solid var(--text-color);
+    color: white;
+}
+
+.tour{
+    padding: 15px 15px;
+}
+
+.tour h2{
+    text-align: center;
+    font-size: var(--h2-font);
+    font-weight: 800;
+    margin-bottom: 15px;
+}
+
+.tour-content{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,auto));
+    /* max ve min genişlik verip ona otomatik sütunlandırma yaptık */
+    /* auto-fit yani otomatik sığdır */
+    /* ikinci auto yazdığımız kısım: benim sütun sayım da bu genişlik ve yüksekliğe göre otomatik olsun */
+    gap: 2rem;
+}
+
+.box img{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    object-fit: cover; /*sığması kapsayıcısı kadar olsun*/
+    filter: brightness(70%);
+    transition: var(--transition);
+}
+
+.box img:hover{
+    filter: brightness(95%) hue-rotate(50deg);
+    /* renkleri biraz karıştırmak için hue rotate */
+}
+
+.center-button{
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.box{
+    position: relative;
+}
+
+.box h6{
+    position: absolute;
+    bottom: 75px;
+    left: 20px;
+    font-size: 20px;
+}
+
+.box h4{
+    position: absolute;
+    bottom: 35px;
+    left: 20px;
+    font-size: 25px;
+}
+
+.form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5rem;
+    padding: 15px 25px;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+}
+
+.form p{
+    font-size: 30px;
+    font-weight: 700;
+
+}
+
+.form .sign{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sign{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.input{
+    display: inline-block;
+}
+
+.input input[type="email"] {
+    width: 230px;
+    height: 33px;
+    border-radius: 5px;
+    background-color: #747474;
+
+}
+
+.input input[type="email"]::placeholder{
+    color: rgb(207, 207, 207);
+    text-indent: 8px;
+}
+
+.search{
+    height: 30px;
+    line-height: 1px;
+}
+
+footer{
+    margin-top: 3rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(200px,auto));
+    gap: 2rem;
+    padding: 15px 20px;
+}
+
+.footer-col{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.footer-col a{
+    color: #979797;
+    transition: var(--transition);
+}
+
+.footer-col a:hover{
+    transform: translateX(-5px);
+    color: var(--text-color);
+}
+
+.social a{
+    width: 45px; /*arka planlarını değiştireceğiz o yüzden width ve height verdik*/
+    height: 45px;
+    display: inline-flex; /*satır içi flex yaptık*/
+    background-color: #202020;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin: 10px;
+}
+
+hr{
+    border: 1px solid #202020;
+}
+
+/* resposive */
+
+@media (max-width:720px) {
+    :root{
+        --h1-font: 3rem; 
+        --h2-font: 2rem;
+        --p-font: 15px;
+    }
+
+    .holiday{
+        grid-template-columns: 1fr; /*720px altına düştüğünde tek satır olsun istedik*/
+    }
+
+    .form{
+        flex-direction: column;
+    }
+}
