@@ -1,6 +1,6 @@
 ﻿# Tur Sitesi
 
- Güncel HTML ve CSS sürümleri kullanılarak oluşturulan tur sitesi
+STour, bir seyahat acentesi için duyarlı bir web sitesi şablonudur. Çeşitli seyahat destinasyonları, kültürel deneyimler ve popüler turlar hakkında bilgi sağlamak için oluşturulmuştur.
 
 ## Özellikler
 
